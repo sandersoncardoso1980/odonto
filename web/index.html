@@ -2,8 +2,10 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Sistema de Agendamentos Odontológicos">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odonto - Sistema de Agendamentos</title>
+  <link rel="manifest" href="manifest.json">
+  <base href="/">
   
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,35 +13,13 @@
   <meta name="apple-mobile-web-app-title" content="odonto">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <title>Odonto - Sistema de Agendamentos</title>
-  <link rel="manifest" href="manifest.json">
-  
-  <!-- CONFIGURAÇÕES IMPORTANTES PARA VERCEL -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/">
-  <!-- FIM DAS CONFIGURAÇÕES VERCEL -->
-
   <script>
-    // Service worker registration for Flutter web
+    // Service worker para Flutter web
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('flutter_service_worker.js');
       });
     }
-
-    // CONFIGURAÇÃO PARA SPA NO VERCEL - ADICIONE ESTE SCRIPT
-    window.addEventListener('load', function() {
-      // Garante que o base href está correto para rotas SPA
-      const base = document.querySelector('base');
-      if (!base.getAttribute('href')) {
-        base.setAttribute('href', '/');
-      }
-      
-      // Redireciona rotas 404 para index.html (SPA)
-      if (window.location.pathname !== '/' && !window.location.pathname.includes('.')) {
-        window.history.replaceState(null, null, '/#' + window.location.pathname);
-      }
-    });
   </script>
 </head>
 <body>
